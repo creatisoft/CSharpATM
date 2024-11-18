@@ -1,39 +1,47 @@
 namespace CSharpATM;
-
+using System.Timers;
 public class ATMSim {
     
-    public static float startingAmount = 100;
+    public static float amountInSavings = 0;
+    public static float startingAmount = 1000;
     
-    public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e) {
+    Timer interestTimer = new Timer();
+
+    public void StartEarningInterest() {
         
+        interestTimer.Interval = 1 * (1000);
+        interestTimer.Elapsed += OnTimedEvent;
+        interestTimer.Enabled = true;
         
-        Console.WriteLine("It should have updated");
+    }
+
+    private void OnTimedEvent(Object source, ElapsedEventArgs e) {
+        
+        //Console.WriteLine("**Interest should have updated**");
+        
+        if (amountInSavings > 0) {
+            
+            amountInSavings = amountInSavings + (amountInSavings * 0.04f);
+            
+        } 
 
     }
     public void CheckBalance() {
         
-        Console.WriteLine("Your balance is: " + startingAmount);
-        
+        Console.WriteLine("Your balance is: " + amountInSavings);
     }
 
     public void Deposit(float amount) {
         
-        startingAmount = startingAmount + amount;
-        
+        amountInSavings += amount;
+        startingAmount -= amount;
     }
 
     public void Withdraw(float amount) {
-
-        if (amount > startingAmount) {
-            
-            Console.WriteLine("Please Try Again...");
-            
-        } else {
-            
-            startingAmount = startingAmount - amount;
-
-        }
         
+        amountInSavings -= amount;
+        amount += startingAmount;
+
     }
     
 }

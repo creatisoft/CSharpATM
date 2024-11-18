@@ -3,21 +3,14 @@
 namespace CSharpATM;
 using System.Timers;
 class Program {
-    
-   
     static void Main(string[] args) {
         
-
         ATMSim atmSim = new ATMSim();
-        Timer txx = new Timer();
-        txx.Interval = 2000;
-       
-        txx.Elapsed += OnTimedEvent;
-       
-        txx.Enabled = true;
+        
+        atmSim.StartEarningInterest();
         
         int userOption = 0;
-        float amountToPass = 0;
+        float amountToPass = 0.0f;
         
         Console.WriteLine("***************************");
         Console.WriteLine("Welcome to C# ATM Sim!");
@@ -50,6 +43,8 @@ class Program {
                     break;
             }
             
+            Console.WriteLine("***************************");
+            Console.WriteLine("Welcome to C# ATM Sim!");
             Console.WriteLine("**************************");
             Console.WriteLine("Select an option:");
             Console.WriteLine("1., Deposit | 2., Withdraw | 0., Check Balance");
@@ -57,15 +52,12 @@ class Program {
             
             
         }
-        
-    
-       
     }
 
     public static void addInterest() {
 
         ATMSim.startingAmount += 10;
-
+        
     }
     
     public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e) {
