@@ -2,6 +2,7 @@
 
 namespace CSharpATM;
 using System.Timers;
+
 class Program {
     static void Main(string[] args) {
         
@@ -52,21 +53,6 @@ class Program {
             
             
         }
-    }
-
-    public static void addInterest() {
-
-        ATMSim.startingAmount += 10;
-        
-    }
-    
-    public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e) {
-        
-        //Console.WriteLine("It should have updated");
-        addInterest();
-        //Console.WriteLine(ATMSim.startingAmount);
-        
-
     }
     
 }
