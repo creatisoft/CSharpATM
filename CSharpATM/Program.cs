@@ -1,4 +1,12 @@
-﻿using System.Diagnostics;
+﻿/*
+ * Christopher M. | Creatisoft.com
+ * Created for the purpose of learning.
+ * 11-19-2024 
+ */
+
+
+
+using System.Diagnostics;
 
 namespace CSharpATM;
 using System.Timers;

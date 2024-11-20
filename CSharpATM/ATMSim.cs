@@ -1,3 +1,10 @@
+/*
+ * Christopher M. | Creatisoft.com
+ * Created for the purpose of learning.
+ * 11-19-2024 
+ */
+
+
 namespace CSharpATM;
 using System.Timers;
 public class ATMSim {
